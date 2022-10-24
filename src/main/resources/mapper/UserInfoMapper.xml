@@ -1,0 +1,17 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.repository.UserInfoRepository">
+    <select id="selectAll" resultType="com.test.entity.UserInfo">
+        select * from user_info
+    </select>
+
+
+    <select id="columnAdd">
+        ALTER TABLE user_info
+            ADD COLUMN `add_test` varchar(255) NULL AFTER `name`;
+    </select>
+
+    <select id="columnDel">
+        ALTER TABLE user_info
+            DROP COLUMN `add_test`;
+    </select>
+</mapper>

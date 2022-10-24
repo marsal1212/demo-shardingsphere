@@ -1,0 +1,17 @@
+server:
+  port: 8091
+spring:
+  application:
+    name: demo-shardingsphere
+  profiles:
+    include: shardingsphere
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        show-sql: false
+        hbm2ddl.auto: none
+management.endpoints.web.exposure.include: '*'
+management.endpoint.health.show-details: always
+mybatis:
+  config-location: classpath:mybatis-config.xml

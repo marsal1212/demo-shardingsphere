@@ -1,0 +1,31 @@
+spring:
+  shardingsphere:
+    schema.name: zd_rescue
+    props:
+      sql-show: true
+    mode:
+      type: Standalone
+    datasource:
+      names: ds-0,ds-1
+      ds-0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.1.202:3306/test_sp?useUnicode=true&characterEncoding=UTF8&useSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true&allowPublicKeyRetrieval=true
+        username: root
+        password: gkxl650
+      ds-1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://192.168.1.202:3306/test_sp?useUnicode=true&characterEncoding=UTF8&useSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true&allowPublicKeyRetrieval=true
+        username: root
+        password: gkxl650
+      readwrite-splitting:
+        data-sources:
+          ds_rw:
+            static-strategy:
+              write-data-source-name: ds-0
+              read-data-source-names:
+                - ds-1
+            load-balancer-name: round_robin
+        load-balancers.round_robin.type: ROUND_ROBIN
+

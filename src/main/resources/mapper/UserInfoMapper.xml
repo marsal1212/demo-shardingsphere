@@ -12,6 +12,6 @@
 
     <select id="columnDel">
         ALTER TABLE user_info
-            DROP COLUMN `add_test`;
+            DROP COLUMN `age`;
     </select>
 </mapper>

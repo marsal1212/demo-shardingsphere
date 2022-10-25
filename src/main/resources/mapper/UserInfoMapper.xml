@@ -1,17 +1,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.test.repository.UserInfoRepository">
-    <select id="selectAll" resultType="com.test.entity.UserInfo">
+    <update id="init" >
+        DROP TABLE IF EXISTS `user_info`;
+        CREATE TABLE `user_info`  (
+                                      `id` int(11) NOT NULL AUTO_INCREMENT,
+                                      `name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                                      `age` int(11) NOT NULL,
+                                      `sex` tinyint(4) NOT NULL DEFAULT 1,
+                                      PRIMARY KEY (`id`) USING BTREE
+        ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
+        INSERT INTO `test_sp`.`user_info` (`id`, `name`, `age`, `sex`) VALUES (1, 'zhangsan', 110, 1);
+    </update>
+
+   <select id="selectAll" resultType="com.test.entity.UserInfo">
         select * from user_info
     </select>
 
 
-    <select id="columnAdd">
+    <update id="columnAdd">
         ALTER TABLE user_info
             ADD COLUMN `add_test` varchar(255) NULL AFTER `name`;
-    </select>
+    </update>
 
-    <select id="columnDel">
+    <update id="columnDel">
         ALTER TABLE user_info
             DROP COLUMN `age`;
-    </select>
+    </update>
 </mapper>

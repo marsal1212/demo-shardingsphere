@@ -3,12 +3,15 @@ package com.test.rest;
 import com.test.entity.UserInfo;
 import com.test.repository.UserInfoRepository;
 import org.apache.shardingsphere.driver.jdbc.core.datasource.ShardingSphereDataSource;
+import org.apache.shardingsphere.infra.database.type.dialect.MySQLDatabaseType;
+import org.apache.shardingsphere.infra.metadata.database.schema.loader.common.TableMetaDataLoader;
 import org.apache.shardingsphere.mode.manager.ContextManager;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.sql.DataSource;
 import java.lang.reflect.Field;
 import java.sql.SQLException;
 import java.util.List;

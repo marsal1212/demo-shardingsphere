@@ -2,7 +2,7 @@ spring:
   shardingsphere:
     schema.name: zd_rescue
     props:
-      sql-show: true
+      sql-show: false
     mode:
       type: Standalone
     datasource:
